@@ -20,7 +20,7 @@ public class Arm {
         DCMOTORSPEED = 0.5;
         ArmStopper1 = new DigitalInput(0);
         ArmStopper2 = new DigitalInput(1);
-        Talon1 = new TalonSRX(2);
+        Talon1 = new TalonSRX(5);
     }
 
 

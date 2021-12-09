@@ -28,19 +28,17 @@ public class RobotContainer {
         configureButtonBindings();
     }
 
-    public void configureButtonBindings() {
-    while (arm::ArmStopper1.get() == false) {
+    private void configureButtonBindings() {
         new JoystickButton(joy, DC_MOTOR_BB_ID).whenHeld(new InstantCommand(arm::Open)).whenReleased(new InstantCommand(arm::Stop));
         new JoystickButton(joy, DC_MOTOR_BB2_ID).whenHeld(new InstantCommand(arm::Close)).whenReleased(new InstantCommand(arm::Stop));
-        new JoystickButton(joy, SHOOTER_BUTTON_ID).whenHeld(new InstantCommand(shooter::shoot)).whenReleased(new InstantCommand(shooter::stopShoot));
+        /*new JoystickButton(joy, SHOOTER_BUTTON_ID).whenHeld(new InstantCommand(shooter::shoot)).whenReleased(new InstantCommand(shooter::stopShoot));
         new JoystickButton(joy, WINCH_BUTTON_ID).whenHeld(new InstantCommand(climber::StartWinch)).whenReleased(new InstantCommand(climber::StopClimb));
         new JoystickButton(joy, INTAKE_BUTTON_ID).whenHeld(new InstantCommand(intake::driverIntake).alongWith(new InstantCommand(feeder::moveCells))).whenReleased(new InstantCommand(intake::stopIntake).alongWith(new InstantCommand(feeder::stopCells)));
         new JoystickButton(joy, INTAKE_REVERSE_ID).whenHeld(new InstantCommand(intake::spitout).alongWith(new InstantCommand(feeder::spit))).whenReleased(new InstantCommand(intake::stopIntake).alongWith(new InstantCommand(feeder::stopCells)));
-       
+       */
         //cart.setDefaultCommand(new mecanumDefaultCommand(cart, joy).perpetually());
         drivetrain.setDefaultCommand(new driveDefaultCommand(drivetrain, joy).perpetually());
     }
-}
 
    static class driveDefaultCommand extends CommandBase {
 
