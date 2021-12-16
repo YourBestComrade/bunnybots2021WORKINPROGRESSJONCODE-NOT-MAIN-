@@ -10,11 +10,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import static frc.team5115.Constants.*;
 
 public class Arm {
-        TalonSRX Talon1;
-        double DCMOTORSPEED;
-        public DigitalInput ArmStopper1;
-        DigitalInput ArmStopper2;
-
+    TalonSRX Talon1;
+    double DCMOTORSPEED;
+    public DigitalInput ArmStopper1;
+    DigitalInput ArmStopper2;
 
     public Arm(){
         DCMOTORSPEED = 0.5;
@@ -23,20 +22,19 @@ public class Arm {
         Talon1 = new TalonSRX(5);
     }
 
-
     public void Stop(){
         Talon1.set(ControlMode.PercentOutput, 0);
     }
+
     public void Open(){
         if(ArmStopper1.get() == true){
             Stop();
-                }
-            else{
+        } else{
             Talon1.set(ControlMode.PercentOutput, DCMOTORSPEED);
         }
         System.out.println("I DID IT");
     }
-
+    
     public void Close(){
         Talon1.set(ControlMode.PercentOutput, -DCMOTORSPEED);
         if(ArmStopper2.get() == true){
@@ -44,5 +42,4 @@ public class Arm {
         }
         System.out.println("I DID IT");
     }
-
 }
